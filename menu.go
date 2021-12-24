@@ -45,6 +45,15 @@ func (m *Menu) Create() (err error) {
 	return
 }
 
+// Create creates the menu
+func (m *Menu) SyncEvt(evt, cmds string) (err error) {
+	if err = m.ctx.Err(); err != nil {
+		return
+	}
+	_, err = synchronousEvent(m.ctx, m, m.w, Event{Name: evt, TargetID: "1", Menu: m.toEvent(), Code: cmds}, EventNameMenuEventCreated)
+	return
+}
+
 // Destroy destroys the menu
 func (m *Menu) Destroy() (err error) {
 	if err = m.ctx.Err(); err != nil {
