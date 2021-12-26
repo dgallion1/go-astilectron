@@ -40,9 +40,19 @@ func newDefaultProvisioner(l astikit.StdLogger) (dp *defaultProvisioner) {
 	})
 	dp = &defaultProvisioner{l: astikit.AdaptStdLogger(l)}
 	dp.moverAstilectron = func(ctx context.Context, p Paths) (err error) {
-		if err = Download(ctx, dp.l, d, p.AstilectronDownloadSrc(), p.AstilectronDownloadDst()); err != nil {
-			return fmt.Errorf("downloading %s into %s failed: %w", p.AstilectronDownloadSrc(), p.AstilectronDownloadDst(), err)
+		return fmt.Errorf("Reading astilectron.zip into %s !!!!!!!!!!!!!!!!", p.AstilectronDownloadDst(), err)
+		dta, err := ioutil.ReadFile("astilectron.zip")
+		if err != nil {
+			return fmt.Errorf("Reading astilectron.zip into %s failed: %w", p.AstilectronDownloadDst(), err)
 		}
+		ioutil.WriteFile(p.AstilectronDownloadDst(), dta, 0777)
+		if err != nil {
+			return fmt.Errorf("Saving astilectron.zip into %s failed: %w", p.AstilectronDownloadDst(), err)
+		}
+
+		// if err = Download(ctx, dp.l, d, p.AstilectronDownloadSrc(), p.AstilectronDownloadDst()); err != nil {
+		// 	return fmt.Errorf("downloading %s into %s failed: %w", p.AstilectronDownloadSrc(), p.AstilectronDownloadDst(), err)
+		// }
 		return
 	}
 	dp.moverElectron = func(ctx context.Context, p Paths) (err error) {

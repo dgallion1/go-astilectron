@@ -11,10 +11,11 @@ import (
 )
 
 // Versions
+// set Dg version to v100.0.1
 const (
 	DefaultAcceptTCPTimeout   = 30 * time.Second
-	DefaultVersionAstilectron = "0.51.0"
-	DefaultVersionElectron    = "11.4.3"
+	DefaultVersionAstilectron = "0.0.1"
+	DefaultVersionElectron    = "13.1.4"
 )
 
 // Misc vars
