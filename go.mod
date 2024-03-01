@@ -1,4 +1,4 @@
-module github.com/dgallion1/systray
+module github.com/dgallion1/go-astilectron
 
 go 1.21
 
