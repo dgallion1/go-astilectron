@@ -1,6 +1,6 @@
-module github.com/asticode/go-astilectron
+module github.com/dgallion1/systray
 
-go 1.13
+go 1.21
 
 require (
 	github.com/asticode/go-astikit v0.15.0
